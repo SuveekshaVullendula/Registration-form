@@ -1,0 +1,177 @@
+<html>
+<head>
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+  font-family:'Times New Roman', Times, serif, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+#registrationForm {
+  margin-left: 100px;
+  margin-top: 100px;
+  width: 400px;
+  background-color: #fff;
+  padding: 50px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(23, 2, 2, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #0f0c0f;
+}
+.mygroup {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="checkbox"] {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color:#36b841;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #0a595c;
+}
+
+.conditiongroup label {
+  display:flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.conditiongroup input[type="checkbox"] {
+  margin-right: 10px;
+  padding-left: 10px;
+  order: 1; 
+  display:inline;
+  width: 15px;
+  margin-left: 8px;
+} 
+/* .entrytable{
+align-items: center; 
+}*/
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  display: block;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding-left: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form id="registrationForm" onsubmit="validateForm(event)">
+      <h2>Registration Form</h2>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required><br><br>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required><br><br>
+      
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required><br><br>
+      
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" required><br><br>
+      
+      <input type="checkbox" id="terms" class="t" name="terms" style="display: inline; width:10px" required>
+      <label for="terms"class="t">I accept the Terms and Conditions</label><br>
+      
+      <button type="submit">Submit</button>
+    </form>
+
+
+    <div id="registrationDetails">
+    <h2>Entries</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Dob</th>
+        <!-- <th>Age</th> -->
+        <th>Accepted Terms?</th>
+      </tr>
+    </thead>
+    <tbody id="detailsTableBody"></tbody>
+  </table>
+      </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html> 
+<script>
+  function subtractYears(date, years) {
+  date.setFullYear(date.getFullYear() - years);
+
+  return date;
+}
+let today=new Date();
+const r = subtractYears(new Date(), 19);
+let mmonth=today.getMonth()+1;
+
+let mdate=today.getDate();
+
+
+let maxYear=r.getFullYear();
+
+const r2= subtractYears(new Date(), 56);
+
+let minYear=r2.getFullYear();
+let maxy=maxYear+"-"+mmonth+"-"+mdate;
+let miny=minYear+"-"+mmonth+"-"+mdate;
+
+  document.getElementById("dob").setAttribute("max",maxy);
+  document.getElementById("dob").setAttribute("min",miny);
+</script>
+
+ 
